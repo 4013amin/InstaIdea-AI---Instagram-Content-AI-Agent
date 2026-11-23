@@ -1,0 +1,278 @@
+{
+  "name": "Instagram AI Studio - Automated Daily Content & Strategy Generator",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 9 * * *"
+            }
+          ]
+        }
+      },
+      "id": "e1a2b3c4-0001-4000-8000-000000000001",
+      "name": "زمان‌بند روزانه (Daily Schedule Trigger)",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        200,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "generate-instagram-idea",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "e1a2b3c4-0002-4000-8000-000000000002",
+      "name": "درخواست دستی وب‌هوک (Webhook Trigger)",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        200,
+        500
+      ],
+      "webhookId": "instagram-ai-generate"
+    },
+    {
+      "parameters": {
+        "jsCode": "// ⚙️ تنظیمات استراتژیک پیج و تقویم محتوایی\n// اطلاعات زیر را متناسب با پیج خود شخصی‌سازی کنید:\n\nreturn [{\n  json: {\n    // کلید API گوگل جمینای (می‌توانید مستقیم اینجا یا در Credentials ست کنید)\n    gemini_api_key: \"YOUR_GEMINI_API_KEY_HERE\",\n    \n    // اطلاعات پیج اینستاگرام\n    page_name: \"آکادمی دیجی‌تک (DigiTech)\",\n    instagram_handle: \"@amin.devv\",\n    niche: \"آموزش فناوری، برنامه‌نویسی و ابزارهای هوش مصنوعی\",\n    description: \"پیج آموزشی تخصصی برای معرفی ابزارهای جدید هوش مصنوعی، ترفندهای کاربردی و افزایش مهارت\",\n    target_audience: \"دانشجویان، فریلنسرها، برنامه‌نویسان و علاقه‌مندان به تکنولوژی و پیشرفت\",\n    content_tone: \"دوستانه، پرانرژی، کاربردی، سریع و بدون اصطلاحات سنگین خسته‌کننده\",\n    page_goals: [\"افزایش فالوور\", \"تعامل بالا\", \"سیو و اشتراک‌گذاری\", \"برندینگ\"],\n    \n    // پرامپت و استایل اختصاصی طراحی پوستر و ظاهر بصری\n    poster_design: {\n      custom_prompt: \"پوستر مینیمال مدرن با پس‌زمینه دارک بلک مات، هایلایت‌های نئونی بنفش و فیروزه‌ای، تایپوگرافی بولد فارسی و المان شیشه‌ای\",\n      primary_color: \"#ec4899\",\n      secondary_color: \"#8b5cf6\",\n      style_theme: \"cyber_neon\",\n      font_size_scale: \"impact\",\n      show_page_id: true\n    },\n    \n    // جدول تقویم محتوایی هفتگی (شنبه تا جمعه)\n    weekly_calendar: [\n      {\n        day_of_week: \"شنبه\",\n        topic: \"آموزش تخصصی و ترفندهای سرعت عمل در نرم‌افزارها و کدنویسی\",\n        content_type: \"Reel\",\n        goal: \"جذب فالوور جدید با هوک میخکوب‌کننده ۳ ثانیه‌ای\",\n        details: \"حل یک مشکل رایج که همه با آن دست‌وپنجه نرم می‌کنند\"\n      },\n      {\n        day_of_week: \"یکشنبه\",\n        topic: \"معرفی ۳ الی ۵ ابزار رایگان هوش مصنوعی جایگزین نرم‌افزارهای پولی\",\n        content_type: \"Carousel\",\n        goal: \"سیو و اشتراک‌گذاری حداکثری\",\n        details: \"پست اسلایدی ورق‌زدنی با کاور کنجکاوکننده و اسلایدهای مرتب\"\n      },\n      {\n        day_of_week: \"دوشنبه\",\n        topic: \"پاسخ به سوالات پرتکرار مخاطبان و سناریوی تعاملی استوری\",\n        content_type: \"Story\",\n        goal: \"افزایش تعامل و صمیمیت با مخاطب\",\n        details: \"استیکر نظرسنجی و کوییز برای بالا بردن ریپلای استوری\"\n      },\n      {\n        day_of_week: \"سه‌شنبه\",\n        topic: \"بررسی پرونده، اشتباهات خطرناک مبتدی‌ها یا مقایسه قبل و بعد\",\n        content_type: \"Reel\",\n        goal: \"اعتبار، مرجعیت و برندینگ فنی\",\n        details: \"داستان‌سرایی و تجربه عملی همراه با مثال\"\n      },\n      {\n        day_of_week: \"چهارشنبه\",\n        topic: \"معرفی دوره، خدمات توسعه، پروژه یا پیشنهاد شگفت‌انگیز\",\n        content_type: \"Post\",\n        goal: \"فروش مستقیم و جذب لید و مشتری\",\n        details: \"کال تو اکشن صریح دایرکت و لینک بیو\"\n      },\n      {\n        day_of_week: \"پنج‌شنبه\",\n        topic: \"چک‌لیست قدم‌به‌قدم هفتگی، خلاصه آموزش‌ها و نکات ضروری\",\n        content_type: \"Carousel\",\n        goal: \"سیو حداکثری برای رجوع دوباره\",\n        details: \"چک‌لیست کاربردی که مخاطب حتماً ذخیره کند\"\n      },\n      {\n        day_of_week: \"جمعه\",\n        topic: \"پشت صحنه کاری، چالش‌های هفتگی و لایف‌استایل برنامه‌نویسی\",\n        content_type: \"Story\",\n        goal: \"وفاداری و ارتباط عاطفی با مخاطب\",\n        details: \"حس خودمانی و آماده‌سازی برای شروع هفته قدرتمند\"\n      }\n    ],\n    \n    // تنظیمات تلگرام (اختیاری جهت دریافت خروجی روی موبایل)\n    telegram_bot_token: \"YOUR_TELEGRAM_BOT_TOKEN_HERE\",\n    telegram_chat_id: \"YOUR_TELEGRAM_CHAT_ID_HERE\"\n  }\n}];"
+      },
+      "id": "e1a2b3c4-0003-4000-8000-000000000003",
+      "name": "پیکربندی پیج و تقویم (Profile & Settings)",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        460,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// تشخیص روز جاری به تقویم شمسی/هفته و استخراج برنامه همان روز\nconst config = $input.first().json;\nconst now = new Date();\nconst persianDays = ['یکشنبه', 'دوشنبه', 'سه‌شنبه', 'چهارشنبه', 'پنج‌شنبه', 'جمعه', 'شنبه'];\nconst todayPersianName = persianDays[now.getDay()];\n\n// استخراج برنامه تقویم برای روز امروز\nconst dayPlan = config.weekly_calendar.find(p => p.day_of_week === todayPersianName) || config.weekly_calendar[0];\n\n// ساخت پرامپت یکپارچه و استاندارد برای ارسال به Gemini AI\nconst systemInstruction = `تو یک مدیر ارشد استراتژی محتوا و اینستاگرامر حرفه‌ای (Instagram Growth Strategist) هستی.\nوظیفه اصلی تو تولید دقیقاً یک سناریوی محتوایی کاربردی، جذاب و قابل اجرا برای پیج اینستاگرام بر اساس تقویم هفتگی کاربر است.\nقوانین:\n۱. ایده باید صددرصد منطبق بر موضوع، هدف و فرمت تعیین‌شده در تقویم محتوایی باشد.\n۲. متن‌ها کاملاً به زبان فارسی روان، اصیل، جذاب و مدرن باشند.\n۳. خروجی باید یک آبجکت JSON معتبر باشد.`;\n\nconst userPrompt = `اطلاعات پیج:\n- نام پیج: ${config.page_name}\n- آیدی: ${config.instagram_handle}\n- حوزه فعالیت: ${config.niche}\n- مخاطبان: ${config.target_audience}\n- لحن: ${config.content_tone}\n\n🗓️ تقویم محتوایی امروز (${todayPersianName}):\n- موضوع مقرر: ${dayPlan.topic}\n- فرمت: ${dayPlan.content_type}\n- هدف: ${dayPlan.goal}\n- نکات خاص: ${dayPlan.details}\n\n🎨 دستورالعمل پرامپت طراحی پوستر و ظاهر بصری:\n- پرامپت پوستر: ${config.poster_design.custom_prompt}\n- رنگ اصلی: ${config.poster_design.primary_color}\n- رنگ دوم: ${config.poster_design.secondary_color}\n- سبک: ${config.poster_design.style_theme}\n- نمایش آیدی: ${config.poster_design.show_page_id ? config.instagram_handle : 'خیر'}\n\nلطفاً سناریوی کامل را به صورت یک آبجکت JSON شامل این فیلدها تولید کن:\n- title (عنوان ایده)\n- content_type (Reel, Story, Carousel, Post)\n- goal (هدف محتوا)\n- hook (هوک میخکوب‌کننده ۳ ثانیه اول)\n- idea (توضیح هسته ایده)\n- script (سناریوی گام‌به‌گام یا تایم‌لاین)\n- video_script (متن دقیق کلامی ویدیو یا متن اسلایدها)\n- caption (کپشن حرفه‌ای و کامل با ایموجی و فاصله‌بندی)\n- cta (کال تو اکشن دقیق)\n- visual_suggestion (پیشنهاد دقیق نور، قاب و طراحی پوستر بر اساس پرامپت طراحی کاربر)\n- hashtags (آرایه‌ای از ۸ الی ۱۲ هشتگ استراتژیک فارسی)\n- carousel_slides (اگر کاروسل است: آرایه‌ای از ۵ اسلاید با شماره، تیتر و متن)\n- story_frames (اگر استوری است: آرایه‌ای از فریم‌ها با متن و نوع استیکر)\n- reason (علت انتخاب این ایده برای رشد پیج)`;\n\nreturn [{\n  json: {\n    ...config,\n    today_day_name: todayPersianName,\n    today_plan: dayPlan,\n    system_instruction: systemInstruction,\n    user_prompt: userPrompt\n  }\n}];"
+      },
+      "id": "e1a2b3c4-0004-4000-8000-000000000004",
+      "name": "تطبیق روز تقویم و ساخت پرامپت (Calendar Matcher)",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        720,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key={{ $json.gemini_api_key }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"systemInstruction\": {\n    \"parts\": [{ \"text\": {{ JSON.stringify($json.system_instruction) }} }]\n  },\n  \"contents\": [\n    {\n      \"parts\": [{ \"text\": {{ JSON.stringify($json.user_prompt) }} }]\n    }\n  ],\n  \"generationConfig\": {\n    \"responseMimeType\": \"application/json\",\n    \"temperature\": 0.7\n  }\n}",
+        "options": {
+          "timeout": 30000
+        }
+      },
+      "id": "e1a2b3c4-0005-4000-8000-000000000005",
+      "name": "هوش مصنوعی گوگل جمینای (Gemini AI Generator)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        980,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// پردازش و ساختاردهی خروجی هوش مصنوعی\nconst response = $input.first().json;\nconst previousData = $('تطبیق روز تقویم و ساخت پرامپت (Calendar Matcher)').first().json;\n\nlet content = {};\ntry {\n  const rawText = response.candidates[0].content.parts[0].text;\n  content = JSON.parse(rawText);\n} catch (e) {\n  throw new Error('خطا در تبدیل خروجی جمینای به JSON: ' + e.message);\n}\n\n// ساخت کپشن نهایی آماده انتشار\nconst hashtagsText = Array.isArray(content.hashtags) \n  ? content.hashtags.map(h => h.startsWith('#') ? h : '#' + h).join(' ')\n  : '#تولید_محتوا #اینستاگرام #آموزش';\n\nconst formattedCaption = `${content.caption || ''}\\n\\n${content.cta ? '💡 ' + content.cta : ''}\\n\\n— — — — — — — — — —\\n🆔 ${previousData.instagram_handle}\\n\\n${hashtagsText}`;\n\n// قالب‌بندی پیام تلگرام\nconst telegramMessage = `✨ <b>ایده و سناریوی امروز اینستاگرام آماده شد!</b>\\n\\n` +\n  `🗓️ <b>روز در تقویم:</b> ${previousData.today_day_name}\\n` +\n  `🎬 <b>فرمت:</b> ${content.content_type} | 🎯 <b>هدف:</b> ${content.goal}\\n` +\n  `📌 <b>عنوان ایده:</b> ${content.title}\\n\\n` +\n  `⚡ <b>هوک شروع (۳ ثانیه اول):</b>\\n«${content.hook}»\\n\\n` +\n  `📝 <b>سناریوی اجرا:</b>\\n${content.script}\\n\\n` +\n  `🗣️ <b>متن کلامی یا اسلایدها:</b>\\n${content.video_script}\\n\\n` +\n  `🎨 <b>طراحی پوستر و کاور:</b>\\n${content.visual_suggestion}\\n\\n` +\n  `➖➖➖➖➖➖➖➖➖➖\\n` +\n  `📋 <b>کپشن آماده برای کپی:</b>\\n<pre>${formattedCaption}</pre>`;\n\nreturn [{\n  json: {\n    ...content,\n    formatted_caption: formattedCaption,\n    telegram_message: telegramMessage,\n    telegram_chat_id: previousData.telegram_chat_id,\n    telegram_bot_token: previousData.telegram_bot_token,\n    generated_at: new Date().toISOString(),\n    instagram_handle: previousData.instagram_handle\n  }\n}];"
+      },
+      "id": "e1a2b3c4-0006-4000-8000-000000000006",
+      "name": "پردازش و قالب‌بندی سناریو (Parser & Formatter)",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1240,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "boolean": [
+            {
+              "value1": "={{ Boolean($json.telegram_bot_token && $json.telegram_bot_token.length > 10 && $json.telegram_chat_id) }}",
+              "value2": true
+            }
+          ]
+        }
+      },
+      "id": "e1a2b3c4-0007-4000-8000-000000000007",
+      "name": "بررسی اتصال تلگرام (Has Telegram?)",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        1500,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://api.telegram.org/bot{{ $json.telegram_bot_token }}/sendMessage",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"chat_id\": \"{{ $json.telegram_chat_id }}\",\n  \"text\": {{ JSON.stringify($json.telegram_message) }},\n  \"parse_mode\": \"HTML\",\n  \"reply_markup\": {\n    \"inline_keyboard\": [\n      [\n        {\n          \"text\": \"📲 باز کردن اینستاگرام برای انتشار\",\n          \"url\": \"https://instagram.com/\"\n        }\n      ]\n    ]\n  }\n}"
+      },
+      "id": "e1a2b3c4-0008-4000-8000-000000000008",
+      "name": "ارسال به تلگرام (Send to Telegram)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1760,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={\n  \"success\": true,\n  \"message\": \"ایده محتوا بر اساس تقویم هفتگی و استایل پوستر با موفقیت تولید شد!\",\n  \"data\": {\n    \"title\": \"{{ $json.title }}\",\n    \"content_type\": \"{{ $json.content_type }}\",\n    \"goal\": \"{{ $json.goal }}\",\n    \"hook\": \"{{ $json.hook }}\",\n    \"script\": \"{{ $json.script }}\",\n    \"video_script\": \"{{ $json.video_script }}\",\n    \"caption\": \"{{ $json.caption }}\",\n    \"formatted_caption\": \"{{ $json.formatted_caption }}\",\n    \"visual_suggestion\": \"{{ $json.visual_suggestion }}\",\n    \"carousel_slides\": {{ JSON.stringify($json.carousel_slides || []) }},\n    \"story_frames\": {{ JSON.stringify($json.story_frames || []) }}\n  }\n}",
+        "options": {}
+      },
+      "id": "e1a2b3c4-0009-4000-8000-000000000009",
+      "name": "پاسخ به وب‌هوک (Respond to Webhook)",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1760,
+        520
+      ]
+    }
+  ],
+  "connections": {
+    "زمان‌بند روزانه (Daily Schedule Trigger)": {
+      "main": [
+        [
+          {
+            "node": "پیکربندی پیج و تقویم (Profile & Settings)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "درخواست دستی وب‌هوک (Webhook Trigger)": {
+      "main": [
+        [
+          {
+            "node": "پیکربندی پیج و تقویم (Profile & Settings)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "پیکربندی پیج و تقویم (Profile & Settings)": {
+      "main": [
+        [
+          {
+            "node": "تطبیق روز تقویم و ساخت پرامپت (Calendar Matcher)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "تطبیق روز تقویم و ساخت پرامپت (Calendar Matcher)": {
+      "main": [
+        [
+          {
+            "node": "هوش مصنوعی گوگل جمینای (Gemini AI Generator)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "هوش مصنوعی گوگل جمینای (Gemini AI Generator)": {
+      "main": [
+        [
+          {
+            "node": "پردازش و قالب‌بندی سناریو (Parser & Formatter)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "پردازش و قالب‌بندی سناریو (Parser & Formatter)": {
+      "main": [
+        [
+          {
+            "node": "بررسی اتصال تلگرام (Has Telegram?)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "بررسی اتصال تلگرام (Has Telegram?)": {
+      "main": [
+        [
+          {
+            "node": "ارسال به تلگرام (Send to Telegram)",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "پاسخ به وب‌هوک (Respond to Webhook)",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "پاسخ به وب‌هوک (Respond to Webhook)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "name": "Instagram"
+    },
+    {
+      "name": "AI Studio"
+    },
+    {
+      "name": "Gemini"
+    }
+  ]
+}

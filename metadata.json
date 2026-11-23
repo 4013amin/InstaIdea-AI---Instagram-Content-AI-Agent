@@ -1,0 +1,6 @@
+{
+  "name": "InstaIdea AI - Instagram Content AI Agent",
+  "description": "ایجنت هوشمند تولید روزانه ایده محتوای اختصاصی اینستاگرام با پایتون و جمنای (سناریو، ریلز، استوری، زمان‌بندی روزانه)",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

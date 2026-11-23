@@ -1,0 +1,253 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Vazirmatn', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+body {
+  font-family: 'Vazirmatn', system-ui, sans-serif;
+  letter-spacing: -0.01em;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.6);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(100, 116, 139, 0.4);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.6);
+}
+
+/* ========================================================
+   LIGHT THEME (تم روشن مدرن و تمیز)
+   ======================================================== */
+html[data-theme="light"] body {
+  background-color: #f8fafc !important;
+  color: #0f172a !important;
+}
+
+html[data-theme="light"] ::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+html[data-theme="light"] ::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+}
+html[data-theme="light"] ::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Backgrounds in Light mode */
+html[data-theme="light"] .bg-slate-950,
+html[data-theme="light"] .bg-slate-950\/85,
+html[data-theme="light"] .bg-slate-950\/80,
+html[data-theme="light"] .bg-slate-950\/70,
+html[data-theme="light"] .bg-slate-950\/60,
+html[data-theme="light"] .bg-slate-950\/50,
+html[data-theme="light"] .bg-slate-950\/40,
+html[data-theme="light"] .bg-slate-950\/90 {
+  background-color: #f1f5f9 !important;
+}
+
+html[data-theme="light"] .bg-slate-900,
+html[data-theme="light"] .bg-slate-900\/98,
+html[data-theme="light"] .bg-slate-900\/95,
+html[data-theme="light"] .bg-slate-900\/90,
+html[data-theme="light"] .bg-slate-900\/80,
+html[data-theme="light"] .bg-slate-900\/70,
+html[data-theme="light"] .bg-slate-900\/60 {
+  background-color: #ffffff !important;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px -1px rgba(0, 0, 0, 0.05);
+}
+
+html[data-theme="light"] .bg-slate-800,
+html[data-theme="light"] .bg-slate-800\/80,
+html[data-theme="light"] .bg-slate-800\/60,
+html[data-theme="light"] .bg-slate-800\/40 {
+  background-color: #e2e8f0 !important;
+  color: #0f172a !important;
+}
+
+html[data-theme="light"] .hover\:bg-slate-800:hover,
+html[data-theme="light"] .hover\:bg-slate-700:hover {
+  background-color: #cbd5e1 !important;
+}
+
+html[data-theme="light"] header {
+  background-color: rgba(255, 255, 255, 0.92) !important;
+  border-bottom-color: #e2e8f0 !important;
+}
+
+html[data-theme="light"] footer {
+  background-color: #ffffff !important;
+  border-top-color: #e2e8f0 !important;
+}
+
+/* Borders in Light mode */
+html[data-theme="light"] .border-slate-800,
+html[data-theme="light"] .border-slate-800\/80,
+html[data-theme="light"] .border-slate-800\/90,
+html[data-theme="light"] .border-slate-700,
+html[data-theme="light"] .border-slate-900 {
+  border-color: #e2e8f0 !important;
+}
+
+/* Typography in Light mode */
+html[data-theme="light"] .text-white {
+  color: #0f172a !important;
+}
+html[data-theme="light"] .text-slate-100 {
+  color: #0f172a !important;
+}
+html[data-theme="light"] .text-slate-200 {
+  color: #1e293b !important;
+}
+html[data-theme="light"] .text-slate-300 {
+  color: #334155 !important;
+}
+html[data-theme="light"] .text-slate-400 {
+  color: #64748b !important;
+}
+html[data-theme="light"] .text-slate-500 {
+  color: #94a3b8 !important;
+}
+
+/* Form Inputs in Light mode */
+html[data-theme="light"] input,
+html[data-theme="light"] textarea,
+html[data-theme="light"] select {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  border-color: #cbd5e1 !important;
+}
+html[data-theme="light"] input::placeholder,
+html[data-theme="light"] textarea::placeholder {
+  color: #94a3b8 !important;
+}
+html[data-theme="light"] input:focus,
+html[data-theme="light"] textarea:focus,
+html[data-theme="light"] select:focus {
+  border-color: #ec4899 !important;
+}
+
+/* Code blocks in Light mode */
+html[data-theme="light"] pre,
+html[data-theme="light"] code {
+  background-color: #f1f5f9 !important;
+  color: #0f172a !important;
+  border-color: #e2e8f0 !important;
+}
+
+
+/* ========================================================
+   SUNSET STUDIO THEME (تم استودیو غروب و بنفش مخملی رویال)
+   ======================================================== */
+html[data-theme="sunset"] body {
+  background-color: #0b0714 !important;
+  color: #fae8ff !important;
+}
+
+html[data-theme="sunset"] ::-webkit-scrollbar-track {
+  background: #140d22;
+}
+html[data-theme="sunset"] ::-webkit-scrollbar-thumb {
+  background: #4a2874;
+}
+html[data-theme="sunset"] ::-webkit-scrollbar-thumb:hover {
+  background: #6b33a8;
+}
+
+/* Backgrounds in Sunset mode */
+html[data-theme="sunset"] .bg-slate-950,
+html[data-theme="sunset"] .bg-slate-950\/85,
+html[data-theme="sunset"] .bg-slate-950\/80,
+html[data-theme="sunset"] .bg-slate-950\/70,
+html[data-theme="sunset"] .bg-slate-950\/60,
+html[data-theme="sunset"] .bg-slate-950\/50,
+html[data-theme="sunset"] .bg-slate-950\/40,
+html[data-theme="sunset"] .bg-slate-950\/90 {
+  background-color: #120b22 !important;
+}
+
+html[data-theme="sunset"] .bg-slate-900,
+html[data-theme="sunset"] .bg-slate-900\/98,
+html[data-theme="sunset"] .bg-slate-900\/95,
+html[data-theme="sunset"] .bg-slate-900\/90,
+html[data-theme="sunset"] .bg-slate-900\/80,
+html[data-theme="sunset"] .bg-slate-900\/70,
+html[data-theme="sunset"] .bg-slate-900\/60 {
+  background-color: #18102d !important;
+}
+
+html[data-theme="sunset"] .bg-slate-800,
+html[data-theme="sunset"] .bg-slate-800\/80,
+html[data-theme="sunset"] .bg-slate-800\/60,
+html[data-theme="sunset"] .bg-slate-800\/40 {
+  background-color: #261642 !important;
+  color: #f5d0fe !important;
+}
+
+html[data-theme="sunset"] .hover\:bg-slate-800:hover,
+html[data-theme="sunset"] .hover\:bg-slate-700:hover {
+  background-color: #381f61 !important;
+}
+
+html[data-theme="sunset"] header {
+  background-color: rgba(22, 14, 41, 0.92) !important;
+  border-bottom-color: #321d54 !important;
+}
+
+html[data-theme="sunset"] footer {
+  background-color: #0b0714 !important;
+  border-top-color: #24143d !important;
+}
+
+/* Borders in Sunset mode */
+html[data-theme="sunset"] .border-slate-800,
+html[data-theme="sunset"] .border-slate-800\/80,
+html[data-theme="sunset"] .border-slate-800\/90,
+html[data-theme="sunset"] .border-slate-700,
+html[data-theme="sunset"] .border-slate-900 {
+  border-color: #341e57 !important;
+}
+
+/* Typography in Sunset mode */
+html[data-theme="sunset"] .text-white {
+  color: #ffffff !important;
+}
+html[data-theme="sunset"] .text-slate-100 {
+  color: #fdf4ff !important;
+}
+html[data-theme="sunset"] .text-slate-200 {
+  color: #fae8ff !important;
+}
+html[data-theme="sunset"] .text-slate-300 {
+  color: #e9d5ff !important;
+}
+html[data-theme="sunset"] .text-slate-400 {
+  color: #c084fc !important;
+}
+html[data-theme="sunset"] .text-slate-500 {
+  color: #9333ea !important;
+}
+
+/* Form Inputs in Sunset mode */
+html[data-theme="sunset"] input,
+html[data-theme="sunset"] textarea,
+html[data-theme="sunset"] select {
+  background-color: #120a22 !important;
+  color: #fdf4ff !important;
+  border-color: #3a2261 !important;
+}
+html[data-theme="sunset"] input::placeholder,
+html[data-theme="sunset"] textarea::placeholder {
+  color: #8b5cf6 !important;
+}
+
